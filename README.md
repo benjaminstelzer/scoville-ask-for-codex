@@ -43,20 +43,18 @@ in testing.
 
 Codex checks whether the requested model and reasoning level are available when it creates the adviser chat. A rejected request is reported without substituting another model. Third-party models need a provider connection configured in Codex. The Claude CLI route requires installed, authenticated Claude Code. Opus 5.5 requires version 2.1.280 or newer. See “How to Ask with Claude Code” for setup.
 
-This Skill works independently. Other Scoville Skills are optional.
+Install and enable every Skill in the suite. Each applies to its own task scope.
+Start Workflow by asking for it explicitly.
 
 ## Install
 
 ### Install this Skill
 
-This standalone package works independently. Ask your compatible agent host:
-
-```text
-Install this Skill for all my projects from this exact package directory:
-https://github.com/benjaminstelzer/scoville-ask-for-codex/tree/main/scoville-ask-for-codex
-Preserve personal settings and unrelated Skills. Report the installed location
-and whether the host discovers the Skill.
-```
+Install this Skill as part of the complete suite from
+[the suite's own packages](https://github.com/benjaminstelzer/scoville-suite-for-codex/tree/main/packages).
+Every member must be installed and enabled. Do not fetch or substitute packages
+from individual Skill repositories. If any member is missing or incompatible,
+report the incomplete installation rather than claiming the suite is ready.
 
 The host needs permission to write to its Skills directory. See the
 [Codex Skills guide](https://learn.chatgpt.com/docs/build-skills)
@@ -139,17 +137,13 @@ See the installed configuration reference for helper inputs and migration.
 
 If Ask reports an expired OAuth session, repeat step 3 and retry. An old CLI can reject the correct model ID. Repeat step 2 instead of substituting a model.
 
-The name comes from the Scoville scale, which originally measured chili heat through dilution.
+
 
 ## Sources
 
 - [Codex App Server and model/list](https://learn.chatgpt.com/docs/app-server#models).
 - [Codex Skills](https://learn.chatgpt.com/docs/build-skills).
 - [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference).
-
-## Family
-
-- [Ask Codex](https://github.com/benjaminstelzer/scoville-ask-for-codex) collects independent advice and reviews in Codex.
 
 ## License
 

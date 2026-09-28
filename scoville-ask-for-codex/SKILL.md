@@ -59,7 +59,7 @@ the missing authorization before dispatch. Do not silently change routes.
    native advisers, or [Claude operation](references/claude.md) for CLI advisers.
 3. For native advisers, call create_thread directly with the question and
    adviser role under [native operation](references/native.md). Its title is
-   exactly `S-ASK <UPPERCASE selected model ID> - <exact calling task title>`.
+   exactly `SC · ASK · <UPPERCASE selected model ID> · <exact calling task title>`.
    For Claude,
    use the existing prepare/claude route. Invoke each selected adviser once.
 4. Retain each native task ID, adviser settings and current question. Follow
@@ -82,9 +82,9 @@ telemetry is unknown. Keep successful native adviser tasks open for follow-ups.
 Resume exact retained handles with their previous settings unless explicitly
 overridden; identify a newly authorized fresh consultation as fresh.
 
-This Skill works independently. Other Scoville Skills are optional. Use an
-available, active sibling only for its applicable concern; do not install,
-simulate or require an absent sibling. Honor explicit user exclusions.
+All Skills included in this suite must be installed and enabled. Use the
+applicable owner without checking sibling availability. Load only instructions
+needed for the task. Explicit invocation gates and user exclusions still apply.
 
 Native advisers receive a read-only instruction. Creating a native task does
 not add a technical write barrier or a separate sandbox. Claude tool restrictions
