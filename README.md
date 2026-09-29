@@ -69,8 +69,6 @@ configured in Codex. The Claude CLI route needs Claude Code installed and
 signed in, and Opus 5.5 needs version 2.1.280 or newer. See "How to Ask with
 Claude Code" for setup.
 
-It works on its own. The other Scoville Skills are optional.
-
 This Skill works independently. Other Scoville Skills are optional.
 
 ## Install
