@@ -32,30 +32,18 @@ Claude uses read tools by default. Web access requires `claude.web_tools`.
 
 ## How it was developed
 
-Real consultations shaped independent advice and follow-ups. Configuration
-and delivery tests cover the helpers, while simulated host results cannot
-establish reliability across every live Codex or Claude failure.
+Early consultations made collecting answers and asking follow-up questions
+more complicated than the question warranted. Native adviser handles and
+saved Claude sessions gave each conversation a clear continuation path.
+Missing answers still have to remain visible: a partial panel is not a consensus.
 
 ## Compatibility
 
-Native advisers need Codex collaboration tools for spawning agents, receiving
-their messages and resuming them. Every adviser needs network access.
-Python 3.11 or newer is required for the helper scripts.
-
-Needs a frontier model from the Fable, Astra, SOL or Opus families, version
-5.0 or newer. The native agent route was checked with Astra and SOL.
-
-The host checks the requested model and effort when starting an agent. Ask
-reports rejection without substituting another model. Available agent capacity
-can limit a consultation. Completed answers stay available while unstarted or
-unresolved advisers are reported separately.
-
-The Claude CLI route needs Claude Code installed and signed in, and Opus 5.5
-needs version 2.1.280 or newer. See "How to Ask with Claude Code" for setup.
-
-This Skill works independently. Other Scoville Skills are optional.
+Requires Codex's native collaboration tools, Python 3.11 or newer, network access and a Fable, Astra, SOL or Opus model (5.0+). Claude consultations also need a signed-in Claude Code CLI, version 2.1.280+ for Opus 5.5.
 
 ## Install
+
+This Skill works independently. Other Scoville Skills are optional.
 
 ### Install this Skill
 
@@ -77,6 +65,16 @@ The complete suite is in the
 [Scoville Suite monorepo](https://github.com/benjaminstelzer/scoville-suite-for-codex).
 Install its released Skill packages, not development templates.
 
+### Set up Claude consultations
+
+1. Install [Claude Code](https://code.claude.com/docs/en/setup) if needed. Open a terminal or PowerShell window.
+2. Run `claude --version`. Opus 5.5 needs **2.1.280 or newer**. For an older version, run `claude update`, then check again. Keep running Claude sessions open.
+3. Run `claude auth login` and complete sign-in in your browser. Run `claude auth status` to check that you are signed in.
+
+If Ask reports an expired OAuth session, repeat step 3 and try again. An
+outdated CLI can reject the correct model ID. In that case, repeat step 2
+rather than switching to another model.
+
 ## How to use
 
 Ask naturally, for example:
@@ -93,16 +91,7 @@ Ask handles the consultation and necessary follow-ups without asking you to
 approve each exchange. Request a follow-up when you need one. Native agents
 keep their context, and Claude can resume its saved session.
 
-### How to Ask with Claude Code
-
-1. Install [Claude Code](https://code.claude.com/docs/en/setup) if needed. Open a terminal or PowerShell window.
-2. Run `claude --version`. Opus 5.5 needs **2.1.280 or newer**. For an older version, run `claude update`, then check again. Keep running Claude sessions open.
-3. Run `claude auth login` and complete sign-in in your browser. Run `claude auth status` to check that you are signed in.
-4. In Codex with this Skill installed, ask: **“Ask Claude to review this change.”** The configured defaults determine the model and reasoning level. Change the `ask` settings in `.scoville/config.json` or name another model or effort in the request.
-
-If Ask reports an expired OAuth session, repeat step 3 and try again. An
-outdated CLI can reject the correct model ID. In that case, repeat step 2
-rather than switching to another model.
+To consult Claude, ask: **“Ask Claude to review this change.”**
 
 ### Configure defaults
 
@@ -112,8 +101,7 @@ root. Anything missing falls back to the shipped defaults.
 Reading settings creates no file. If you name something explicitly in a
 request, it overrides these values for that call only, without saving them.
 
-Use Scoville Setup to inspect or save adviser choices. A model or effort named
-in one request applies to that call without changing saved defaults.
+Edit the project settings to save adviser choices.
 
 For example, this `.scoville/config.json` selects SOL and Fable by default and
 changes only SOL's effort:
