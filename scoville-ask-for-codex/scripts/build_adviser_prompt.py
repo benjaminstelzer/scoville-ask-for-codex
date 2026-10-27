@@ -57,7 +57,11 @@ def main() -> int:
     if not question.strip():
         parser.error('--question-file must contain the request and necessary evidence')
     rules = []
-    for name in ('adviser.md', 'writing.md', 'native-delivery.md'):
+    rule_names = ['adviser.md', 'writing.md']
+    if args.mode == 'review':
+        rule_names.append('code-review.md')
+    rule_names.append('native-delivery.md')
+    for name in rule_names:
         path = ROOT / 'references' / name
         try:
             rules.append(path.read_text(encoding='utf-8'))

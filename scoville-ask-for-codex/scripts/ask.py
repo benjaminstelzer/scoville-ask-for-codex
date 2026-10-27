@@ -44,6 +44,8 @@ def prepare(request):
     settings = resolve(request)['config']
     role = read_utf8(ROOT / 'references/adviser.md', 'packaged adviser contract')
     writing = read_utf8(ROOT / 'references/writing.md', 'packaged writing rules')
+    code_review = (read_utf8(ROOT / 'references/code-review.md', 'packaged code-review rules')
+                   if mode == 'review' else '')
     shell_rules = ROOT / 'references' / 'shell-commands.md'
     require(shell_rules.is_file(), f'packaged shell rules missing at {shell_rules}; use the intact built Ask package')
     entries = []
@@ -53,7 +55,9 @@ def prepare(request):
         if adviser['route'] == 'native':
             raise ValueError(f"adviser {adviser['id']!r}.route='native' cannot use prepare; use build_adviser_prompt.py and collaboration.spawn_agent for this native adviser or select a claude-cli adviser")
         else:
-            prompt = (role + '\n\n' + writing + f'\n\nmode: {mode}\nadviser_id: {adviser["id"]}'
+            prompt = (role + '\n\n' + writing
+                      + ('\n\n' + code_review if code_review else '')
+                      + f'\n\nmode: {mode}\nadviser_id: {adviser["id"]}'
                       + f'\nworkspace_root: {cwd}\nconsultation_reference: {ref}\nscope: {scope}'
                       + f'\nshell_command_rules: {shell_rules}; read before shell commands other than file reads, complete-file preparation or output that may exceed an applicable limit.'
                       + '\n\nInspect only the supplied scope in this workspace. Resolve relative evidence paths there.'

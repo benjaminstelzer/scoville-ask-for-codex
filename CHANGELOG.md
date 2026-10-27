@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased - 2026-10-27
+
+- Require code reviews to inspect simplicity, maintainability, foreseeable extension and clarity for later agents. Trace loops, recursion and scanning calls for avoidable nonlinear repeated work without requiring benchmarks.
+- Include the complete code-review policy in native and Claude review prompts. Consultation prompts stay unchanged.
+
 ## Unreleased - 2026-10-20
 
 - Keep required text complete when choosing how to read it. File size and metadata remain optional, and completed reads need no verification reread.
