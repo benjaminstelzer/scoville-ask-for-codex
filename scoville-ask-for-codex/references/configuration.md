@@ -55,6 +55,7 @@ settings change, but have no effect. Native advisers are subagents without
 sidebar chats. Scoville Setup is optional. Without it, save explicitly requested changes
 directly in the project's config using the schema below, preserving unrelated
 fields. Ask runs with its bundled defaults or request overrides without Setup.
+Users can edit `.scoville/config.json` manually for supported special reasoning levels.
 
 The selected project root owns `.scoville/config.json`. Its `ask` section
 overrides this Skill's defaults. Missing files or fields use those defaults.
