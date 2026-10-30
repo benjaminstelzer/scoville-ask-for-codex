@@ -56,6 +56,9 @@ sidebar chats. Scoville Setup is optional. Without it, save explicitly requested
 directly in the project's config using the schema below, preserving unrelated
 fields. Ask runs with its bundled defaults or request overrides without Setup.
 Users can edit `.scoville/config.json` manually for supported special reasoning levels.
+After such an edit, validate read-only with
+`python -X utf8 "<ask-skill-directory>/scripts/ask.py" --project-root "<absolute-project-root>"`.
+Nonzero exit or `ok:false` leaves the edit unvalidated; this command never migrates it.
 
 The selected project root owns `.scoville/config.json`. Its `ask` section
 overrides this Skill's defaults. Missing files or fields use those defaults.
